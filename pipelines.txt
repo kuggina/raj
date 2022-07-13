@@ -1,0 +1,279 @@
+*Azure Pipelines*
+
+1. what is pipeline ?
+a)Pipelines are used to complete the tasks.
+With the help of Pipelines we can able to customize the tasks.
+Here we have a 2 types of pipelines are availble. those Azure
+1. Build Pipelines
+2. Release Pipelines.
+
+Manuval Pipelines : Build and Relase.
+Automatic Pipelines : CI and CD.
+
+We have a multiple tools are availble in to create a CI and CD pipelines.
+  1. Jenkins - AWS Devops Engineer.
+  2. Azure Pipelines : Azure Devops Engineer.
+  3. Bamboo : License needs to purchase.
+  4. Gitlab :License needs to purchase.
+
+Jenkins :
+- Open source 
+- Supports only Java projects
+- we need to integrate all the devops tools.
+- with the help of plugins we can able to integrate.
+- we are the resposbile person for manageing the jenkins.
+- It doesnt support the MAC OS projects
+
+Azure Pipelines : 
+- License
+- Supports all type of programming Language
+- all the devops tools we get inbuilt.
+- we no need to use any pluguins to integrate the devops tools
+- Microsoft is responsbile for managing the Azure Pipelines
+- It support the MAC OS projects
+
+Build Pipelines : This is used for convert the application raw code into machine undestandbul code i.e. Package.
+
+Release Pipelines : This is used for deploying the artifact into multiple servers ( Multiple Stages / Environments)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+2. Explain about ci and cd pipelines?
+a)
+
+CI Means Contuinous Integration.
+with the help of this we can automate the builds and tasks.
+When the deveopler make any changes into the source code automatically build will be triggered and artifact will be 
+generated this process is called as CI.
+Here We need to be enabled CI Option in Trigeer section.
+In this CI process we are using the Self Hosted Agents.
+
+
+CD Means Contuinous Deployment.
+When the CI is completed then artifact will be generated that artifact will be deployed into multiple Environments
+this process we called as a CD.
+Here We need to Enable the CD option in Artifcat Section.
+Here We are using the Azure Webapps for CD purpose.
+Here We are using the below Stages / Environments
+Dev,QA,UAT,Non Prod,Prod.
+
+Build Pipelines : With the help of multiple tasks we can convert the application code into package this process
+                  is called as a Build Pipelines and this build Pipelines output is called as a "Artifact".
+                  This complete process we are doing via Manuvally.
+CI              : when the eveloper make any changes into the source code automatically Build Pipelines
+                  will triggered and artifact will be generated this process we called as a CI.
+                  CI Means Contunious Integration.
+
+if we run Build / CI pipelines we are using the SHA / MHA.
+                    
+Relase Pipelines : once the Build Pipelines is completed then we will get the Artifact that Artifact will be
+                   deployed into multiple environments / Stages by Manuvally.
+
+CD ( Contunious Deployment) : once the Build Pipelines is completed then we will get the Artifact that Artifact will be
+                   deployed into multiple environments / Stages via Automatic.
+
+We have a multiple environments those are like :
+
+Dev : Development.
+QA : Quality Assurence.
+UAT : User acceptence test.
+PREF : Performance.
+INFOSEC : Informtion Security.
+Pre Prod / Non Prod : Observation of your application.
+Prod : Live Application.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+3. what are the tasks you are using in the Build & relase pipelines?
+
+Build Pipelines  / CI pipelines Tasks :
+
+1. Dependcies Task : ASP.NET project "NUGET".
+                   : Java Project "Maven"
+2. Build Solution Task : MS Build tools
+                         POM.xml & Settings.xml
+3. Code Covarage Task : Sonar cloud tools
+4. Test Plans Task : Selinum Test cases / VS Test cases.
+5. Publish Artifact Task : Final output Package / Artifact.
+
+Relase Pipeline / CD pipelines : 
+1. Deploy into azure webapps.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+4. what is agent ? how many types of agents are availble ?
+
+Build Creation with the Help  of MHA Agent in azure Pipelines :
+
+if you want to run a Build or release pipelines we need a agent.
+
+Agent is nothing but a server / vm it consisting the required softwares to run pipelines.
+
+Agent pools : it consiting the multple agents.
+
+Here we have a 2 types of agent pools are availble.
+1. ORG Level Agent pools :
+
+   https://dev.azure.com/lenkasureshkumarazdevops/_settings/agentpools
+   
+2. Project Lelel Agent Pools
+
+Here We have a 2 types of agents those are 
+1. Micro soft hosted Agent (MHA) : Azure Pipelines means MHA.
+2. Self Hosted Agent (SHA) : Default or any other name.
+
+In this Azure Devops portal we have a Azure Pipelines option.
+
+Here Pipelines option is used for Build and CI pipelines creation purpose.
+Here Relase option is used for Relase and CD pipelines creation purpose.
+
+What are the possible ways we have a to failed the Build Pipeline ?
+- Wrong Repos Seclection
+- Agent is Not availble
+- Unable to fetch the dependcies.
+- Wrongly assigned Varibales.
+- MSBuild Arguments path also incorrect
+- Solution file path is incorrect.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. what is the difference between the SHA & MHA
+
+Microsoft Hosted Agents
+1.Microsoft is responsble for providing the agents
+2.microsoft is responsbile for security,patches and updates in agents
+3.when the pipeline is created automatically one fresh virtual machines allocated & once the pipeline job done automatically virtualmachine  disappear
+4.we don't have full control on the agents
+5.all the required softwares installed on agent for run the pipelines
+6.pipeline exeuction time is high becayse this is used by all the azure devops users
+
+
+Self hosted agents
+1.We are the responsbile for providing the agents
+2.We are the responsbile for security,patches and updates in Agents
+3.when the pipeline is created we need to allocated virtual machine & once the pipeline jon is completed still the vm is availble
+4.we have a full control on the agents
+5.we need to install required softwares for run the pipeline.
+6.pipeline exeuction time is less because this is used by ours only
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+6. what is the dirference between the YAML pipeline vs classic pipelines?
+
+Classic:
+1. We can create a pipeline based on UI mode
+2. 1.0
+3. classic pipelines are jason format.
+4. all created pipelines are stored in pipeline storage.
+5. we can not customized pipeline without access. (contributor access we can not do any action)
+
+
+YAML
+1.We can create a pipeline based on Code
+2. 2.0
+3. YAML format with (type of XML).
+4. all created pipelines in YAML based stored in branch storage.
+5. we can do customized pipeline without access. (without contributor access we can do any action).
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+7.i want to run a pipeline with a specific agent ? with the help of demands
+Pending 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8.i wamnt to schedule a pipelines ?
+
+In the trigger section we have a 3 options :
+1. Enable contunioue intergartion
+2. schedule
+3. Buildafter completeion
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+9. what is Task groups?  (doubt on answer)
+
+Build Pipelines  / CI pipelines Tasks :
+
+1. Dependcies Task : ASP.NET project "NUGET".
+                   : Java Project "Maven"
+2. Build Solution Task : MS Build tools
+                         POM.xml & Settings.xml
+3. Code Covarage Task : Sonar cloud tools
+4. Test Plans Task : Selinum Test cases / VS Test cases.
+5. Publish Artifact Task : Final output Package / Artifact.
+
+Relase Pipeline / CD pipelines : 
+1. Deploy into azure webapps.
+
+What are the approaches we have a to create a CI / CD or Build / Relase pipelines ?
+We have a 2 approaches those are 
+1. Using the Classic Editor 
+2. YAML Pipelines
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10. what is deployment groups ?
+11. what is variable and variable groups ?
+12. How do you reslove your production issues ?
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
